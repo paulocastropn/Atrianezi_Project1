@@ -1,0 +1,48 @@
+
+
+{{!-- CRUD Functionality --}}
+{{!-- CREATE button --}}
+{{#if user}}
+  <a href="/products/add" class="btn2" style="margin: 20px;"><strong>Add a new product</strong></a>
+{{/if}}
+
+<input
+  type="text"
+  id="search-input"
+  placeholder="Search products..."
+  class="form-control"
+  style="margin: 20px auto; max-width: 400px;"
+/>
+
+{{!-- READ Show Table to view all products in db --}}
+<table>
+    <thead>
+        <th>Name</th>
+        <th>SKU</th>
+        <th>Collection</th>
+        <th>Stock</th>
+        <th></th>
+    </thead>
+    <tbody>
+        {{!-- Retrieve all products and loop --}}
+        {{#each dataset}}
+        <tr>
+            <td>{{this.name}}</td>
+            <td>{{this.sku}}</td>
+            <td>{{this.collection.name}}</td>
+            <td>{{this.stock}}</td>
+            {{!-- UPDATE and DELETE buttons --}}
+            <td>
+                {{#if ../user}}
+                <a href="/products/edit/{{this._id}}" class="btn btn-primary">Edit</a>
+                <a
+                    href="/products/delete/{{this._id}}"
+                    onclick="return confirmDeletion()"
+                    class="btn btn-danger"
+                >Delete</a>
+                {{/if}}
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>

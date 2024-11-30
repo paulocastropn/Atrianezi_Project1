@@ -1,0 +1,35 @@
+<h1>
+  {{title}}
+</h1>
+<form method="POST">
+  {{! Input names have to match the name of the fields in the Mongo schema object }}
+  <fieldset>
+    <label for="name" class="col-2">
+      Name:
+    </label>
+    <input name="name" id="name" required value="{{product.name}}" />
+  </fieldset>
+  <fieldset>
+    <label for="sku" class="col-2">
+      SKU:
+    </label>
+    <input name="sku" id="sku" required type="text" value="{{product.sku}}" />
+  </fieldset>
+    <fieldset><br>
+    <label for="collection" class="col-2">Collection:</label>&nbsp;&nbsp;
+    <select name="collection" id="collection" required>
+      {{#each collection}}  <!-- Loop through the collections passed from the controller -->
+        <option value="{{this._id}}">{{this.name}}</option> <!-- Use collection's ID as value -->
+      {{/each}}
+    </select>
+  </fieldset>
+  <fieldset>
+    <label for="stock" class="col-2">
+      Stock:
+    </label>
+    <input name="stock" id="stock" type="number" value="{{product.stock}}" min="0" />
+  </fieldset><br>
+  <button class="offset-3 btn3 btn-primary">
+    Save
+  </button>
+</form>

@@ -1,0 +1,29 @@
+
+{{#if user}}
+  <a href="/collections/add" class="btn2" style="margin: 20px;"><strong>Add a new Collection</strong></a>
+{{/if}}
+
+<!-- Add the Search Input -->
+<input
+  type="text"
+  id="search-input"
+  placeholder="Search collections..."
+  class="form-control"
+  style="margin: 20px auto; max-width: 400px;"
+/>
+
+<!-- Table to Display Collections -->
+<table >
+  <thead>    
+      <th>Name</th>
+      <th>Code</th>    
+  </thead>
+  <tbody>
+    {{#each dataset}}
+    <tr>
+      <td>{{this.name}}</td>
+      <td>{{this.code}}</td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
